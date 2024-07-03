@@ -198,10 +198,6 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
 			>
 			<File
-				RelativePath=".\AidynDecoder.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\BlitzDecoder.cpp"
 				>
 			</File>
@@ -306,15 +302,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\QuakeDecoder.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\rnc_deco.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SnowboardKidsDecoder.cpp"
 				>
 			</File>
 			<File
@@ -347,10 +335,6 @@
 			</File>
 			<File
 				RelativePath=".\TetrisphereDecoder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\TigDecoder.cpp"
 				>
 			</File>
 			<File
