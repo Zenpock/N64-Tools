@@ -2481,8 +2481,9 @@ void CGEDecompressorDlg::DecompressZLibFromTable(CString gameNameStr, CGEDecompr
 			{
 				address = ((CharArrayToLong(&input[x]) >> shift) * multiplier) + tblOffset + offset;
 				unsigned char btType = input[x+3];
-				if (btType == 0x04) // empty
-					continue;
+				if(address<=0x1E8A794) //Don't exclude files with an 0x04 in the second table because they are not empty
+					if (btType == 0x04) // empty
+						continue;
 
 				type.Format("%02X", btType);
 				if (btType == 0x1A)
