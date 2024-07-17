@@ -3625,6 +3625,7 @@ void CGEDecompressorDlg::AddRowData(CGEDecompressorDlg* dlg, unsigned long addre
 	listUpdate->address = address;
 	listUpdate->fileSizeUncompressed = fileSizeUncompressed;
 	listUpdate->fileSizeCompressed = fileSizeCompressed;
+	listUpdate->fileSizeOriginal = fileSizeCompressed;
 	listUpdate->internalName = static_cast<LPCTSTR>(internalName);
 	listUpdate->tempLocation = static_cast<LPCTSTR>(tempLocation);
 	listUpdate->type = type;
@@ -6242,7 +6243,7 @@ void CGEDecompressorDlg::OnBnClickedButton3()
 	unsigned long diff = 0xF000000;
 
 	if (listUpdateStruct->fileSizeCompressed > 0)
-		diff = listUpdateStruct->fileSizeCompressed;
+		diff = listUpdateStruct->fileSizeOriginal;
 	else if (rowSel < (m_list.GetItemCount() - 1))
 	{
 		ListUpdateStruct* listUpdateStructNext = ((ListUpdateStruct*)m_list.GetItemData(rowSel+1));

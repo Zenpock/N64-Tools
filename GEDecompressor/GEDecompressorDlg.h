@@ -45,6 +45,7 @@ struct ListUpdateStruct
 	unsigned long address;
 	int fileSizeUncompressed;
 	int fileSizeCompressed;
+	int fileSizeOriginal;
 	CString type;
 	CString internalName;
 	CString tempLocation;
