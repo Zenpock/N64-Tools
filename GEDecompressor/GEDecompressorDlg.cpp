@@ -6413,17 +6413,17 @@ void CGEDecompressorDlg::OnBnClickedButton3()
 				}
 				if ((zlibGame == BANJOTOOIE) && (address >= 0x01E899B0)) 
 				{
-					char message[256];
-					sprintf(message, "Original address: 0x%X\n", address);
-					MessageBox(message);
+					//char message[256];
+					//sprintf(message, "Original address: 0x%X\n", address);
+					//MessageBox(message);
 			        
 					long value = CharArrayToLong(&ROM[address]);
-					sprintf(message, "Value from ROM: 0x%08lx\n", value);
-					MessageBox(message);
+					//sprintf(message, "Value from ROM: 0x%08lx\n", value);
+					//MessageBox(message);
 
 					address = (value) + 0x1E899C0;
-					sprintf(message, "Transformed address: 0x%08lx\n", address);
-					MessageBox(message);
+					//sprintf(message, "Transformed address: 0x%08lx\n", address);
+					//MessageBox(message);
 
 					fread(&ROM[address], 1, diff, inNew);
 				}
