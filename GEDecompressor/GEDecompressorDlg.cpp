@@ -2453,7 +2453,39 @@ void CGEDecompressorDlg::DecompressConkerFromTable(CGEDecompressorDlg* dlg, CStr
 		}
 	}
 }
+void CGEDecompressorDlg::DecompressZLibAtPosition(CString gameNameStr, CGEDecompressorDlg* dlg, CString filein, unsigned long start, int GAME)
+{
 
+	CString folderPath = filein;
+	folderPath = folderPath.Mid(0, (folderPath.ReverseFind('\\') + 1));
+
+	GECompression compressed;
+	compressed.SetPath(dlg->directory);
+	compressed.SetGame(GAME);
+
+	unsigned char* input;
+	int size;
+	if (ReadROM(gameNameStr, filein, input, size, folderPath))
+	{
+		ReceivedNewROM(dlg, filein, input, size);
+		unsigned long address;
+		CString type = "";
+		CString fileNameStr = "";
+		address = start;
+			//0x1E29B60;
+
+		//char message[256];
+		//sprintf(message, "Read address: 0x%X\n", address);
+		//::MessageBox(NULL, message, "Rom", NULL);
+
+		CString tempLocation;
+		int fileSizeCompressed = -1;
+		
+			int fileSizeUncompressed = DecompressZLibSpot(&compressed, dlg->genText, address, input, size, GAME, folderPath, fileNameStr, -1, tempLocation, fileSizeCompressed, type, address, false, 0);
+				
+			AddRowData(dlg, address, fileSizeCompressed, fileSizeUncompressed, fileNameStr, tempLocation, type);	
+	}
+}
 void CGEDecompressorDlg::DecompressZLibFromTable(CString gameNameStr, CGEDecompressorDlg* dlg, CString filein, unsigned long start, unsigned long end, int step, int GAME, unsigned long tblOffset, int shift, int multiplier, int offset)
 {
 	CString folderPath = filein;
@@ -3930,6 +3962,10 @@ UINT CGEDecompressorDlg::DecompressGameThread( LPVOID pParam )
 			else if (region == 0x45) // (U)
 			{
 				DecompressZLibFromTable(gameNameStr, dlg, strROMPath, 0x5188, 0x11A24 , 4, BANJOTOOIE, 0x12B24, 8, 4, 0);
+				DecompressZLibAtPosition(gameNameStr, dlg, strROMPath, 0x1E29B60,BANJOTOOIE);
+				DecompressZLibAtPosition(gameNameStr, dlg, strROMPath, 0x1E3F718,BANJOTOOIE);
+				DecompressZLibAtPosition(gameNameStr, dlg, strROMPath, 0x1E42550,BANJOTOOIE);
+				DecompressZLibAtPosition(gameNameStr, dlg, strROMPath, 0x1E86C76,BANJOTOOIE);
 				DecompressZLibFromTable(gameNameStr, dlg, strROMPath, 0x1E899B0, 0x1E8A77C , 4, BANJOTOOIE, 0x1E899B0, 0, 1, 0x10);
 			}
 			

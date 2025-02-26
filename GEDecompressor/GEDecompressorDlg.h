@@ -108,6 +108,7 @@ public:
 	static int DecompressBlitzSpot(CBlitzDecoder* compressed, bool genText, int offset, unsigned char* GameBuffer, int romSize, int GAME, CString folderPath, CString internalName, int expectedSize, CString& tempLocation, int& fileSizeCompressed, CString& type);
 	static void WriteBinaryFile(CString filename, unsigned char* outputDecompressed, int fileSize, bool appendFile);
 	void WriteLongToBuffer(unsigned char* Buffer, unsigned long address, unsigned long data);
+	static void DecompressZLibAtPosition(CString gameNameStr, CGEDecompressorDlg* dlg, CString filein, unsigned long start,int GAME);
 	static void DecompressZLibFromTable(CString gameNameStr, CGEDecompressorDlg* dlg, CString filein, unsigned long start, unsigned long end, int step, int GAME, unsigned long tblOffset, int shift, int multiplier, int offset);
 	static void DecompressConkerFromTable(CGEDecompressorDlg* dlg, CString filein, unsigned char* input, int size, unsigned long start, unsigned long end, int GAME, bool writeFileNumberInstead, int bankNumber);
 	static void DecryptBTFile(int fileNumber, unsigned char* input, unsigned char* output, int size);
